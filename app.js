@@ -1,17 +1,27 @@
 
+const btns = document.querySelectorAll('#book-list .delete');
 const bookList = document.querySelector('#book-list');
+/*btns.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+        const li = e.target.parentElement;
+        li.parentElement.removeChild(li);
+    });
+});
+*/
 
-console.log('#book-list child nodes', bookList.childNodes);
-console.log('#book-list child element', bookList.children);
+/* Event bubbling
+    when an event ocuurs in a element that event will bubbled up the parent
+    using this concepts we can attach more optimal way of event handling,
+    distinguishing the events based on the element is done
+*/
 
-/* nextSibling gives the immediate next adjacent element includes line breaks  */
-/* nextSibling gives the immediate next adjacent element includes line breaks  */
-console.log('#page-list next sibling node', bookList.nextSibling);
-console.log('#page-list next sibling element', bookList.nextElementSibling);
+bookList.addEventListener('click', (e) => {
+    if (e.target.className == 'delete') {
+        e.target.parentElement.remove();
+    }
+});
 
-/* previous Element sibling */
-console.log('#page-list prev sibling', bookList.previousSibling);
-console.log('#page-list next sibling element', bookList.previousElementSibling);
+
 
 
 
