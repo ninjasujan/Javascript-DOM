@@ -1,18 +1,15 @@
 
+const bookList = document.querySelector('#book-list');
 
-const banner = document.querySelector('#page-banner');
+/* nextSibling gives the immediate next adjacent element includes line breaks  */
+/* nextSibling gives the immediate next adjacent element includes line breaks  */
+console.log('#page-list next sibling node', bookList.nextSibling);
+console.log('#page-list next sibling element', bookList.nextElementSibling);
 
-console.log("#page-banner Node type: ", banner.nodeType);
-console.log("#page-banner Node Name: ", banner.nodeName);
+/* previous Element sibling */
 
-console.log("is #page-banner has child node", banner.hasChildNodes());
+console.log('#page-list prev sibling', bookList.previousSibling);
+console.log('#page-list next sibling element', bookList.previousElementSibling);
 
-const bannerCopy = banner.cloneNode(true);
-console.log(bannerCopy);
-
-/*
-    'true' - helps to create a deep copy by coping all it's child node as well
-    'false' - inverse of true
-*/
 
 
