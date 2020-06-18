@@ -4,7 +4,15 @@
 // we can directly access the form using forms array using index or id of the form
 const bookList = document.querySelector('#book-list ul');
 const addBookForm = document.forms['add-book'];
-console.log(addBookForm);
+
+/* deleting a book from a list */
+bookList.addEventListener('click', (e) => {
+    if (e.target.className == 'delete') {
+        e.target.parentElement.remove();
+    }
+});
+
+
 
 addBookForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -37,6 +45,33 @@ addBookForm.addEventListener('submit', (e) => {
     bookList.appendChild(li);
 
 });
+
+/* hide and showing the books */
+const hideBox = document.querySelector('#hide');
+
+hideBox.addEventListener('change', (e) => {
+    if (hideBox.checked) {
+        bookList.style.display = 'none';
+    } else {
+        bookList.style.display = 'initial';
+    }
+});
+
+/* filtering the books by name */
+const searchBar = document.forms['search-books'].querySelector('input');
+
+searchBar.addEventListener('keyup', (e) => {
+    const term = e.target.value.toLowerCase();
+    const books = bookList.querySelectorAll('li');
+    books.forEach(book => {
+        const bookTitle = book.firstElementChild.textContent;
+        if (bookTitle.toLocaleLowerCase().indexOf(term) != -1) {
+            book.style.display = 'block';
+        } else {
+            book.style.display = 'none';
+        }
+    })
+})
 
 
 
