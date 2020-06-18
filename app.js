@@ -13,7 +13,6 @@ bookList.addEventListener('click', (e) => {
 });
 
 
-
 addBookForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const bookName = addBookForm.book.value;
@@ -71,6 +70,24 @@ searchBar.addEventListener('keyup', (e) => {
             book.style.display = 'none';
         }
     })
+});
+
+
+// tabbed content
+const tabs = document.querySelector('.tabs');
+const panels = document.querySelectorAll('.panel');
+
+tabs.addEventListener('click', (e) => {
+    if (e.target.tagName == 'LI') {
+        const targetPanel = document.querySelector(e.target.dataset.target);
+        panels.forEach(panel => {
+            if (panel == targetPanel) {
+                panel.classList.add('active');
+            } else {
+                panel.classList.remove('active');
+            }
+        })
+    }
 })
 
 
